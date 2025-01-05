@@ -88,7 +88,7 @@ markdown-it-py
 MarkupSafe
 matplotlib
 mdurl
-menuinst
+# menuinst
 mkl-service
 mkl_fft
 mkl_random
