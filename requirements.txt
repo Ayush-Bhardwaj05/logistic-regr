@@ -82,7 +82,7 @@ jsonschema-specifications
 keras
 kiwisolver
 libclang
-libmambapy
+# libmambapy
 Markdown
 markdown-it-py
 MarkupSafe
