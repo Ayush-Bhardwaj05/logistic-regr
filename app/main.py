@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 # Function to load and preprocess the data
 def get_clean_data():
-    data = pd.read_csv("data/data.csv")
+    data = pd.read_csv("../data/data.csv")
     # Dropping unnecessary columns
     data = data.drop(['Unnamed: 32', 'id'], axis=1)
     # Encoding diagnosis column: Malignant ('M') as 1, Benign ('B') as 0
@@ -126,50 +126,11 @@ def get_radar_chart(input_data):
     )
     return fig
 
-# Function to make predictions and display results
-# Function to make predictions and display results
-# def add_predictions(input_data):
-#     # Load the ensemble model, scaler, and PCA transformer
-#     model = pickle.load(open("model/logistic_regression_model.pkl", "rb"))
-#     scaler = pickle.load(open("model/scaler.pkl", "rb"))
-#     pca = pickle.load(open("model/pca.pkl", "rb"))
-
-#     # Transform user input for prediction
-#     input_array = np.array(list(input_data.values())).reshape(1, -1)
-#     input_array_scaled = scaler.transform(input_array)
-
-#     # Apply PCA transformation
-#     input_array_pca = pca.transform(input_array_scaled)
-
-#     # Make predictions with the ensemble model
-#     ensemble_pred = model.predict(input_array_pca)
-#     ensemble_probabilities = model.predict_proba(input_array_pca)
-
-#     # Get probabilities from individual models in the ensemble
-#     individual_probs = []
-#     for model_instance in model.estimators_:
-#         prob = model_instance.predict_proba(input_array_pca)
-#         individual_probs.append(prob)
-
-#     # Print individual model probabilities (for debugging or further analysis)
-#     print("Individual model probabilities:")
-#     for i, prob in enumerate(individual_probs):
-#         print(f"Model {i + 1} - Benign Probability: {prob[0][0]:.4f} | Malignant Probability: {prob[0][1]:.4f}")
-
-#     # Display results in Streamlit
-#     st.subheader("Cell cluster prediction")
-#     if ensemble_pred[0] == 0:
-#         st.write("<span class='diagnosis benign'>Benign</span>", unsafe_allow_html=True)
-#     else:
-#         st.write("<span class='diagnosis malignant'>Malignant</span>", unsafe_allow_html=True)
-
-#     st.write(f"Probability of being benign: {ensemble_probabilities[0][0]:.4f}")
-#     st.write(f"Probability of being malignant: {ensemble_probabilities[0][1]:.4f}")
 def add_predictions(input_data):
     # Load the logistic regression model, scaler, and PCA transformer
-    model = pickle.load(open("model/logistic_regression_model.pkl", "rb"))
-    scaler = pickle.load(open("model/scaler.pkl", "rb"))
-    pca = pickle.load(open("model/pca.pkl", "rb"))
+    model = pickle.load(open("../model/model/lr_model.pkl", "rb"))
+    scaler = pickle.load(open("../model/model/scaler.pkl", "rb"))
+    pca = pickle.load(open("../model/model/pca.pkl", "rb"))
 
     # Transform user input for prediction
     input_array = np.array(list(input_data.values())).reshape(1, -1)
@@ -195,7 +156,7 @@ def add_predictions(input_data):
 # Main function to structure the app
 def main():
     st.set_page_config(page_title="Breast Cancer Predictor", layout="wide", initial_sidebar_state="expanded")
-    with open("assets/style.css") as f:
+    with open("../assets/style.css") as f:
         st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 
     input_data = add_sidebar()
