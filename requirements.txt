@@ -23,9 +23,9 @@ click
 colorama
 # conda
 # conda-content-trust
-conda-libmamba-solver
-conda-package-handling
-conda_package_streaming
+# conda-libmamba-solver
+# conda-package-handling
+# conda_package_streaming
 contourpy
 cryptography
 cycler
