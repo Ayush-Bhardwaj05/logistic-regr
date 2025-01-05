@@ -132,7 +132,7 @@ python-dotenv
 python-multipart
 python3-openid
 pytz
-pywin32
+# pywin32
 PyYAML
 realtime
 referencing
