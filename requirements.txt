@@ -3,7 +3,7 @@ aiohappyeyeballs
 aiohttp
 aiosignal
 altair
-anaconda-anon-usage
+# anaconda-anon-usage
 annotated-types
 anyio
 archspec
